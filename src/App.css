@@ -1,0 +1,70 @@
+body {
+    background-color: #1d1d1d;
+    color: white;
+}
+
+main {
+    padding-top: 50px;
+    max-width: 340px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#buttons-container {
+    margin-top: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.start-pause-btn {
+  margin-bottom: 10px;  
+  display: inline-block;
+  text-decoration: none;
+  border: 2px solid #D9EDFF;
+  color: #339DFF;
+  font-size: 13px;
+  text-align: center;
+  line-height: 38px;
+  border-radius: 100px;
+  padding: 0 22px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  background: #fff;
+  width: 170px;
+}
+
+.start-pause-btn:hover {
+    box-shadow: 0 2px 4px rgba(83, 100, 255, 0.45);
+    cursor: pointer;
+}
+
+button.settings, .back-btn {
+    background-color: transparent;
+    width: 50px;
+    border: 0;
+    color: white;
+    cursor: pointer;
+}
+
+button.settings {
+    position: absolute;
+    right: 15px;
+    top: 0;
+}
+
+div.back-btn-container {
+    position: relative;
+}
+
+button.back-btn {
+    position: absolute;
+    left: -75px;
+}
+
+label {
+    margin-top: 15px;
+    display: block;
+}

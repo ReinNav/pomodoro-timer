@@ -25,61 +25,47 @@ const longBreakLengthOptions = [
 function Settings() {
     const settingsInfo = useContext(SettingsContext);
 
-    const [selectedPomodoroLength, setSelectedPomodoroLength] = useState(null);
-    const [selectedShortBreak, setSelectedShortBreak] = useState(null);
-    const [selectedLongBreak, setSelectedLongBreak] = useState(null);
-
     useEffect(() => {
         const storedPomodoroLength = localStorage.getItem('myPomodoroLength');
-        console.log(storedPomodoroLength);
         if (storedPomodoroLength) {
-            setSelectedPomodoroLength(JSON.parse(storedPomodoroLength));
+            settingsInfo.setSelectedPomodoroLength(JSON.parse(storedPomodoroLength));
         }
     }, []);
 
     useEffect(() => {
         const storedShortBreak = localStorage.getItem('myShortBreak');
         if (storedShortBreak) {
-            setSelectedShortBreak(JSON.parse(storedShortBreak));
+            settingsInfo.setSelectedShortBreak(JSON.parse(storedShortBreak));
         }
     }, []);
 
     useEffect(() => {
         const storedLongBreak = localStorage.getItem('myLongBreak');
         if (storedLongBreak) {
-            setSelectedLongBreak(JSON.parse(storedLongBreak));
+            settingsInfo.setSelectedLongBreak(JSON.parse(storedLongBreak));
         }
     }, []);
 
     const handlePomodoroChange = (selectedPomodoroLength) => {
-        setSelectedPomodoroLength(selectedPomodoroLength);
+        settingsInfo.setSelectedPomodoroLength(selectedPomodoroLength);
         localStorage.setItem('myPomodoroLength', JSON.stringify(selectedPomodoroLength));
         /* console.log(`Option pomodoro selected:`, selectedPomodoroLength); */
     };
 
     const handleShortBreakChange = (selectedShortBreak) => {
-        setSelectedShortBreak(selectedShortBreak);
+        settingsInfo.setSelectedShortBreak(selectedShortBreak);
         localStorage.setItem('myShortBreak', JSON.stringify(selectedShortBreak));
     };
 
     const handleLongBreakChange = (selectedLongBreak) => {
-        setSelectedLongBreak(selectedLongBreak);
+        settingsInfo.setSelectedLongBreak(selectedLongBreak);
         localStorage.setItem('myLongBreak', JSON.stringify(selectedLongBreak));
     };
 
-    const contextValue = {
-        selectedPomodoroLength,
-        selectedShortBreak,
-        selectedLongBreak,
-        handlePomodoroChange,
-        handleShortBreakChange,
-        handleLongBreakChange,
-
-    };
 
 
     return (
-        <SettingsContext.Provider value={contextValue}>
+        <section>
             <div className='back-btn-container'>
                 <BackButton onClick={() => settingsInfo.setShowSettings(false)}/>
             </div>
@@ -87,26 +73,27 @@ function Settings() {
             <div style={{ textAlign: 'left' }}>
                 <label>Pomodoro length:</label>
                 <Select
-                    value={selectedPomodoroLength}
+                    value={settingsInfo.selectedPomodoroLength}
                     onChange={handlePomodoroChange}
                     options={pomodoroLengthOptions}
                 />
 
                 <label>Short break length:</label>
                 <Select
-                    value={selectedShortBreak}
+                    value={settingsInfo.selectedShortBreak}
                     onChange={handleShortBreakChange}
                     options={shortBreakLengthOptions}
                 />
 
                 <label>Long break length:</label>
                 <Select
-                    value={selectedLongBreak}
+                    value={settingsInfo.selectedLongBreak}
                     onChange={handleLongBreakChange}
                     options={longBreakLengthOptions}
                 />
             </div>
-        </SettingsContext.Provider>
+        </section>
+            
     );
 }
 

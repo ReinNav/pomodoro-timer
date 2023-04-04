@@ -1,8 +1,8 @@
 import React from "react"
 
-function StartPauseButton() {
+function StartPauseButton(props) {
     return (
-        <button class="start-pause-btn">Start</button>
+        <button {...props} className="start-pause-btn">{props.label}</button>
     )
 }
 

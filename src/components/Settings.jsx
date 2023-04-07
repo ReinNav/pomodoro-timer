@@ -65,7 +65,7 @@ function Settings() {
 
 
     return (
-        <section>
+        <div>
             <div className='back-btn-container'>
                 <BackButton onClick={() => settingsInfo.setShowSettings(false)}/>
             </div>
@@ -92,7 +92,7 @@ function Settings() {
                     options={longBreakLengthOptions}
                 />
             </div>
-        </section>
+        </div>
             
     );
 }

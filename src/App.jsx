@@ -10,7 +10,7 @@ function App() {
   const [selectedPomodoroLength, setSelectedPomodoroLength] = useState(25);
   const [selectedShortBreak, setSelectedShortBreak] = useState(5);
   const [selectedLongBreak, setSelectedLongBreak] = useState(20);
-
+  const [pomodoroCount, setPomodoroCount] = useState(0);
 
   return (
     <main>
@@ -19,10 +19,12 @@ function App() {
         selectedPomodoroLength,
         selectedShortBreak,
         selectedLongBreak,
+        pomodoroCount,
         setShowSettings,
         setSelectedPomodoroLength,
         setSelectedShortBreak,
-        setSelectedLongBreak
+        setSelectedLongBreak,
+        setPomodoroCount
       }}>
         {showSettings ? <Settings /> : <Timer />}
       </SettingsContext.Provider>
